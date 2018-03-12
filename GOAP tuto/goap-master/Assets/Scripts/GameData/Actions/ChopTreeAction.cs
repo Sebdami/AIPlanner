@@ -13,6 +13,7 @@ public class ChopTreeAction : GoapAction
 	public ChopTreeAction () {
 		addPrecondition ("hasTool", true); // we need a tool to do this
 		addPrecondition ("hasLogs", false); // if we have logs we don't want more
+        addPrecondition("hasFood", true);
 		addEffect ("hasLogs", true);
 	}
 	
@@ -74,6 +75,7 @@ public class ChopTreeAction : GoapAction
 			// finished chopping
 			BackpackComponent backpack = (BackpackComponent)agent.GetComponent(typeof(BackpackComponent));
 			backpack.numLogs += 1;
+            backpack.numFood--;
 			chopped = true;
 			ToolComponent tool = backpack.tool.GetComponent(typeof(ToolComponent)) as ToolComponent;
 			tool.use(0.34f);

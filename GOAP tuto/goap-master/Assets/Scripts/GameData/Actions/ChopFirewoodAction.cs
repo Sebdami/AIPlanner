@@ -13,9 +13,10 @@ public class ChopFirewoodAction : GoapAction
 	public ChopFirewoodAction () {
 		addPrecondition ("hasTool", true); // we need a tool to do this
         addPrecondition("hasLogs", true);
+        addPrecondition("hasFood", true);
         addPrecondition ("hasFirewood", false); // if we have firewood we don't want more
 		addEffect ("hasFirewood", true);
-	}
+    }
 	
 	public override void reset ()
 	{
@@ -74,7 +75,9 @@ public class ChopFirewoodAction : GoapAction
 			// finished chopping
 			BackpackComponent backpack = (BackpackComponent)agent.GetComponent(typeof(BackpackComponent));
 			backpack.numFirewood += 5;
-			chopped = true;
+            backpack.numLogs = 0;
+            backpack.numFood--;
+            chopped = true;
 			ToolComponent tool = backpack.tool.GetComponent(typeof(ToolComponent)) as ToolComponent;
 			tool.use(0.34f);
 			if (tool.destroyed()) {

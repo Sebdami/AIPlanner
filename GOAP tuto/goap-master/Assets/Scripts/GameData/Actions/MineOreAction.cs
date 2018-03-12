@@ -13,7 +13,8 @@ public class MineOreAction : GoapAction
 	public MineOreAction () {
 		addPrecondition ("hasTool", true); // we need a tool to do this
 		addPrecondition ("hasOre", false); // if we have ore we don't want more
-		addEffect ("hasOre", true);
+        addPrecondition("hasFood", true);
+        addEffect ("hasOre", true);
 	}
 	
 	
@@ -71,6 +72,7 @@ public class MineOreAction : GoapAction
 			// finished mining
 			BackpackComponent backpack = (BackpackComponent)agent.GetComponent(typeof(BackpackComponent));
 			backpack.numOre += 2;
+            backpack.numFood--;
 			mined = true;
 			ToolComponent tool = backpack.tool.GetComponent(typeof(ToolComponent)) as ToolComponent;
 			tool.use(0.5f);

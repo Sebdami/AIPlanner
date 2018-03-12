@@ -13,6 +13,7 @@ public class BreakBranchesWithToolAction : GoapAction
 	public BreakBranchesWithToolAction() {
         addPrecondition ("hasTool", true); // we need a tool to do this
         addPrecondition("hasLogs", false);
+        addPrecondition("hasFood", true);
         addPrecondition ("hasFirewood", false); // if we have logs we don't want more
 		addEffect ("hasFirewood", true);
 	}
@@ -76,7 +77,7 @@ public class BreakBranchesWithToolAction : GoapAction
 			BackpackComponent backpack = (BackpackComponent)agent.GetComponent(typeof(BackpackComponent));
 			backpack.numFirewood += 1;
 			finished = true;
-
+            backpack.numFood--;
             ToolComponent tool = backpack.tool.GetComponent(typeof(ToolComponent)) as ToolComponent;
             tool.use(0.34f);
             if (tool.destroyed())

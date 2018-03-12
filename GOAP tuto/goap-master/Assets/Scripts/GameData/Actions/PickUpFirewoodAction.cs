@@ -9,7 +9,7 @@ public class PickUpFirewoodAction : GoapAction
 	
 	public PickUpFirewoodAction() {
 		addPrecondition ("hasFirewood", false); // don't get a logs if we already have one
-		addEffect ("hasFirewood", true); // we now have a logs
+        addEffect ("hasFirewood", true); // we now have a logs
 	}
 	
 	
@@ -64,14 +64,13 @@ public class PickUpFirewoodAction : GoapAction
 	
 	public override bool perform (GameObject agent)
 	{
-		if (targetSupplyPile.NumLogs > 0) {
-			targetSupplyPile.NumLogs -= 1;
+		if (targetSupplyPile.NumFirewood > 0) {
+			targetSupplyPile.NumFirewood -= 1;
 			hasFirewood = true;
 			//TODO play effect, change actor icon
 			BackpackComponent backpack = (BackpackComponent)agent.GetComponent(typeof(BackpackComponent));
-			backpack.numLogs = 1;
-			
-			return true;
+			backpack.numFirewood = 1;
+            return true;
 		} else {
 			// we got there but there was no logs available! Someone got there first. Cannot perform action
 			return false;

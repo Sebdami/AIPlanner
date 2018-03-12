@@ -44,7 +44,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
 		worldData.Add(new KeyValuePair<string, object>("hasFirewood", (backpack.numFirewood > 0) ));
 		worldData.Add(new KeyValuePair<string, object>("hasTool", (backpack.tool != null) ));
         worldData.Add(new KeyValuePair<string, object>("hasFood", (backpack.numFood > 0)));
-        worldData.Add(new KeyValuePair<string, object>("hadWheat", (backpack.numWheat > 0)));
+        worldData.Add(new KeyValuePair<string, object>("hasMeat", (backpack.numMeat > 0)));
         return worldData;
 	}
 

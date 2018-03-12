@@ -13,6 +13,7 @@ public class ForgeToolAction : GoapAction
 	public ForgeToolAction () {
 		addPrecondition ("hasOre", true);
         addPrecondition("hasFirewood", true);
+        addPrecondition("hasFood", true);
         addEffect ("hasNewTools", true);
 	}
 	
@@ -74,7 +75,9 @@ public class ForgeToolAction : GoapAction
 			// finished forging a tool
 			BackpackComponent backpack = (BackpackComponent)agent.GetComponent(typeof(BackpackComponent));
 			backpack.numOre = 0;
-			forged = true;
+            backpack.numLogs = 0;
+            backpack.numFood--;
+            forged = true;
 		}
 		return true;
 	}

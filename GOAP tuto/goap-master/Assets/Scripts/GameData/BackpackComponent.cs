@@ -10,7 +10,7 @@ public class BackpackComponent : MonoBehaviour
 	public int numLogs;
 	public int numFirewood;
 	public int numOre;
-    public int numWheat;
+    public int numMeat;
     public int numFood;
     public string toolType = "ToolAxe";
 	
