@@ -63,7 +63,7 @@ public class DropOffToolsAction : GoapAction
 	
 	public override bool perform (GameObject agent)
 	{
-		targetSupplyPile.NumTools += 2;
+		targetSupplyPile.NumTools += 4;
 		droppedOffTools = true;
 		//TODO play effect, change actor icon
 		
